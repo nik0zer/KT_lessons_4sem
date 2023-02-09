@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/nikozer/KT_lessons_4sem/build",
+  "command": "/usr/bin/c++    -g   -std=gnu++2a -o CMakeFiles/bank.dir/main.o -c /home/nikozer/KT_lessons_4sem/2sem/mipt-cs-cpp/oop/main.cpp",
+  "file": "/home/nikozer/KT_lessons_4sem/2sem/mipt-cs-cpp/oop/main.cpp"
+},
+{
+  "directory": "/home/nikozer/KT_lessons_4sem/build",
+  "command": "/usr/bin/c++    -g   -std=gnu++2a -o CMakeFiles/bank.dir/bank.o -c /home/nikozer/KT_lessons_4sem/2sem/mipt-cs-cpp/oop/bank.cpp",
+  "file": "/home/nikozer/KT_lessons_4sem/2sem/mipt-cs-cpp/oop/bank.cpp"
+}
+]

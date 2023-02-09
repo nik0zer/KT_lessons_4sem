@@ -1,5 +1,10 @@
 #include <string>
 
+class Money
+{
+  
+};
+
 class Account {
  private:
   const std::string name_;

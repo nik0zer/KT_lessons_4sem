@@ -1,0 +1,3 @@
+/home/nikozer/KT_lessons_4sem/build/CMakeFiles/rebuild_cache.dir
+/home/nikozer/KT_lessons_4sem/build/CMakeFiles/edit_cache.dir
+/home/nikozer/KT_lessons_4sem/build/CMakeFiles/bank.dir
