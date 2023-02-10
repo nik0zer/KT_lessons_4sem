@@ -35,6 +35,7 @@ bool Account::put(Money& money) {
     return false;
   }
   this->amount_ += money.value_;
+  money.usage_ = false;
   return true;
 }
 
@@ -56,14 +57,14 @@ bool RUBAccountWithOverdraft::validate(int amount, std::string currency) {
   return true;
 }
 
-std::ostream& Money::operator<<(std::ostream &out)
+std::ostream& operator<<(std::ostream &out, Money &money)
 {
-  out<<"dsfdsf"<<std::endl;
+  out<<money.value_<<" "<<money.currency_;
   return out; 
 }
 
-std::ostream& Account::operator<<(std::ostream &out)
+std::ostream& operator<< (std::ostream &out, const Account &account)
 {
-  out<<name_<<" "<<amount_<<" "<<currency_;
+  out<<account.name_<<" "<<account.amount_<<" "<<account.currency_;
   return out;
 }

@@ -7,7 +7,7 @@ class Money
   bool usage_;
   std::string currency_;
   Money(const Money &money) = delete;
-  std::ostream& operator<<(std::ostream &out);
+  friend std::ostream& operator<<(std::ostream &out, Money& money);
 
 
  protected:
@@ -30,7 +30,7 @@ class Account
   // disable copy and assignment to make a copy of initial object
   Account(const Account &acc) = delete;
   Account &operator=(const Account &) = delete;
-  std::ostream& operator<<(std::ostream &out);
+  friend std::ostream& operator<< (std::ostream &out, const Account &account);
 
  protected:
   int amount_;
