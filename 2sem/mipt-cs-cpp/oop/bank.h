@@ -2,15 +2,35 @@
 
 class Money
 {
-  
+ private:
+  int value_;
+  bool usage_;
+  std::string currency_;
+  Money(const Money &money) = delete;
+  std::ostream& operator<<(std::ostream &out);
+
+
+ protected:
+  Money(int value, std::string currency) : value_(value), currency_(currency), usage_(true){};
+
+ private:
+  friend class Account;
 };
 
-class Account {
+class RUBMoney : Money
+{
+ protected:
+  RUBMoney(int value) : Money(value, "RUB"){};
+};
+
+class Account 
+{
  private:
   const std::string name_;
   // disable copy and assignment to make a copy of initial object
   Account(const Account &acc) = delete;
   Account &operator=(const Account &) = delete;
+  std::ostream& operator<<(std::ostream &out);
 
  protected:
   int amount_;
@@ -21,8 +41,8 @@ class Account {
 
  public:
   void print();
-  int take(int amount, std::string currency);
-  bool put(int amount, std::string currency);
+  Money& take(int amount, std::string currency);
+  bool put(Money& money);
   const std::string &getName() const { return name_; };
 };
 
@@ -34,7 +54,8 @@ class RUBAccount : public Account {
   friend class Bank;
 };
 
-class RUBAccountWithOverdraft : public RUBAccount {
+class RUBAccountWithOverdraft : public RUBAccount 
+{
  private:
   int _limit;
   friend class Bank;
@@ -43,7 +64,8 @@ class RUBAccountWithOverdraft : public RUBAccount {
   bool validate(int amount, std::string currency) override;
 };
 
-class Bank {
+class Bank 
+{
  public:
   static Account *create(std::string name);
   static Account *createPremium(std::string name);

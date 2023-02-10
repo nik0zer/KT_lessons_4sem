@@ -2,12 +2,6 @@
 
 #include <iostream>
 
-// Account::Account(int amount, std::string currency, std::string name) {
-//     this->amount_ = amount;
-//     this->currency_ = currency;
-//     this->name_ = name;
-// }
-
 bool Account::validate(int amount, std::string currency) {
   if (amount > this->amount_) {
     std::cerr << "No funds" << std::endl;
@@ -25,20 +19,22 @@ void Account::print() {
             << std::endl;
 }
 
-int Account::take(int amount, std::string currency) {
+Money& Account::take(int amount, std::string currency) {
+  Money* null_money = new Money(0, currency);
   if (!validate(amount, currency)) {
-    return 0;
+    return *null_money;
   }
 
+  Money* money = new Money(amount, currency_);
   this->amount_ -= amount;
-  return amount;
+  return *money;
 }
 
-bool Account::put(int amount, std::string currency) {
-  if (currency != this->currency_) {
+bool Account::put(Money& money) {
+  if (money.currency_ != this->currency_ || !money.usage_) {
     return false;
   }
-  this->amount_ += amount;
+  this->amount_ += money.value_;
   return true;
 }
 
@@ -58,4 +54,16 @@ bool RUBAccountWithOverdraft::validate(int amount, std::string currency) {
     return false;
   }
   return true;
+}
+
+std::ostream& Money::operator<<(std::ostream &out)
+{
+  out<<"dsfdsf"<<std::endl;
+  return out; 
+}
+
+std::ostream& Account::operator<<(std::ostream &out)
+{
+  out<<name_<<" "<<amount_<<" "<<currency_;
+  return out;
 }

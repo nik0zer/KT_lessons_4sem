@@ -13,12 +13,11 @@ int main() {
   // Account copy = *acc1;
   // std::cout << &copy << " " << acc1 << "\n";
   // copy.print();
-  acc1->print();
-  acc2->print();
-  acc1->take(50, "RUB");
-  acc1->print();
-  acc1->take(60, "RUB");
-  acc1->print();
+  std::cout<<acc1<<"\n"<<acc2<<"\n";
+  Money& m1 = acc1->take(50, "RUB");
+  std::cout<<acc1<<std::endl;
+  Money& m2 = acc1->take(60, "RUB");
+  std::cout<<acc1<<std::endl;
 
   delete acc1;
   delete acc2;
