@@ -19,23 +19,25 @@ void Account::print() {
             << std::endl;
 }
 
-Money& Account::take(int amount, std::string currency) {
-  Money* null_money = new Money(0, currency);
+std::shared_ptr<Money> Account::take(int amount, std::string currency) 
+{
+  std::shared_ptr<Money> null_money(new Money(0, currency));
+
   if (!validate(amount, currency)) {
-    return *null_money;
+    return null_money;
   }
 
-  Money* money = new Money(amount, currency_);
+  std::shared_ptr<Money> money(new Money(amount, currency));
   this->amount_ -= amount;
-  return *money;
+  return money;
 }
 
-bool Account::put(Money& money) {
-  if (money.currency_ != this->currency_ || !money.usage_) {
+bool Account::put(std::shared_ptr<Money> money) {
+  if (money->currency_ != this->currency_ || !money->usage_) {
     return false;
   }
-  this->amount_ += money.value_;
-  money.usage_ = false;
+  this->amount_ += money->value_;
+  money->usage_ = false;
   return true;
 }
 

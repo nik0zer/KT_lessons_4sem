@@ -1,4 +1,5 @@
 #include <string>
+#include <memory>
 
 class Money
 {
@@ -41,8 +42,8 @@ class Account
 
  public:
   void print();
-  Money& take(int amount, std::string currency);
-  bool put(Money& money);
+  std::shared_ptr<Money> take(int amount, std::string currency);
+  bool put(std::shared_ptr<Money>);
   const std::string &getName() const { return name_; };
 };
 
