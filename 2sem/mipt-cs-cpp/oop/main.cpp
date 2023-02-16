@@ -10,20 +10,20 @@ int main()
   std::shared_ptr<Account> acc2(Bank::create("masha"));
 
 
-  std::cout<<*acc1<<"\n"<<*acc2<<"\n";
+  std::cout<<acc1<<"\n"<<acc2<<"\n";
   
   std::shared_ptr<Money> m1 = acc1->take(50, "RUB");
   
-  std::cout<<*acc1<<std::endl;
+  std::cout<<acc1<<std::endl;
   
   std::shared_ptr<Money> m2 = acc1->take(60, "RUB");
   
-  std::cout<<*acc1<<std::endl;
+  std::cout<<acc1<<std::endl;
   
   acc1 += m2;
   
-  std::cout<<*acc1<<std::endl;
+  std::cout<<acc1<<std::endl;
   std::cout<<"put "<<acc1->put(m2)<<std::endl;
-  std::cout<<*acc1<<std::endl;
-  std::cout<<"m1 "<<*m1<<std::endl;  
+  std::cout<<acc1<<std::endl;
+  std::cout<<"m1 "<<m1<<std::endl;  
 }

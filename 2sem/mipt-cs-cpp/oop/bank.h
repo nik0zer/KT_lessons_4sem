@@ -9,6 +9,7 @@ class Money
   std::string currency_;
   Money(const Money &money) = delete;
   friend std::ostream& operator<<(std::ostream &out, Money& money);
+  friend std::ostream& operator<<(std::ostream &out, std::shared_ptr<Money> money);
 
 
  protected:
@@ -51,6 +52,7 @@ class Account
   friend Account& operator+=(std::shared_ptr<Account> acc, std::shared_ptr<Money> money);
   const std::string &getName() const { return name_; };
   friend std::ostream& operator<<(std::ostream &out, const Account &account);
+  friend std::ostream& operator<<(std::ostream &out, std::shared_ptr<Account> account);
 };
 
 class RUBAccount : public Account {

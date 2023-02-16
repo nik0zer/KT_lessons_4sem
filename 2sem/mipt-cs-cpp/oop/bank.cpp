@@ -69,9 +69,21 @@ std::ostream& operator<<(std::ostream &out, Money &money)
   return out; 
 }
 
+std::ostream& operator<<(std::ostream &out, std::shared_ptr<Money> money)
+{
+  out<<*money;
+  return out; 
+}
+
 std::ostream& operator<<(std::ostream &out, const Account &account)
 {
   out<<account.name_<<" "<<account.amount_<<" "<<account.currency_;
+  return out;
+}
+
+std::ostream& operator<<(std::ostream &out, std::shared_ptr<Account> account)
+{
+  out<<*account;
   return out;
 }
 
