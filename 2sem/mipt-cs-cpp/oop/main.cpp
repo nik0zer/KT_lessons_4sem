@@ -8,6 +8,7 @@ int main()
   
   std::unique_ptr<Account> acc1(Bank::createPremium("vasya"));
   std::unique_ptr<Account> acc2(Bank::create("masha"));
+  
 
   std::cout<<*acc1<<"\n"<<*acc2<<"\n";
   
