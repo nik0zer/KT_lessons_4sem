@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream &out, Money &money)
   return out; 
 }
 
-std::ostream& operator<< (std::ostream &out, const Account &account)
+std::ostream& operator<<(std::ostream &out, const Account &account)
 {
   out<<account.name_<<" "<<account.amount_<<" "<<account.currency_;
   return out;
