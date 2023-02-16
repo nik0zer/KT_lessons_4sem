@@ -33,11 +33,15 @@ std::shared_ptr<Money> Account::take(int amount, std::string currency)
 }
 
 bool Account::put(std::shared_ptr<Money> money) {
-  if (money->currency_ != this->currency_ || !money->usage_) {
+  return put(*money);
+}
+
+bool Account::put(Money& money) {
+  if (money.currency_ != this->currency_ || !money.usage_) {
     return false;
   }
-  this->amount_ += money->value_;
-  money->usage_ = false;
+  this->amount_ += money.value_;
+  money.usage_ = false;
   return true;
 }
 
@@ -69,4 +73,22 @@ std::ostream& operator<<(std::ostream &out, const Account &account)
 {
   out<<account.name_<<" "<<account.amount_<<" "<<account.currency_;
   return out;
+}
+
+Account& Account::operator+=(Money& money)
+{
+  put(money);
+  return *this;
+}
+
+Account& Account::operator+=(std::shared_ptr<Money> money)
+{
+  *this += *money;
+  return *this;
+}
+
+Account& operator+=(std::shared_ptr<Account> acc, std::shared_ptr<Money> money)
+{
+  *acc += *money;
+  return *acc;
 }

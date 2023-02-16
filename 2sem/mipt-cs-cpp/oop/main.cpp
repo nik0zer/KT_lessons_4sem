@@ -6,9 +6,9 @@ int main()
 {
   std::cout << "Hello world" << std::endl;
   
-  std::unique_ptr<Account> acc1(Bank::createPremium("vasya"));
-  std::unique_ptr<Account> acc2(Bank::create("masha"));
-  
+  std::shared_ptr<Account> acc1(Bank::createPremium("vasya"));
+  std::shared_ptr<Account> acc2(Bank::create("masha"));
+
 
   std::cout<<*acc1<<"\n"<<*acc2<<"\n";
   
@@ -20,7 +20,7 @@ int main()
   
   std::cout<<*acc1<<std::endl;
   
-  acc1->put(m2);
+  acc1 += m1;
   
   std::cout<<*acc1<<std::endl;
   std::cout<<"put "<<acc1->put(m2)<<std::endl;

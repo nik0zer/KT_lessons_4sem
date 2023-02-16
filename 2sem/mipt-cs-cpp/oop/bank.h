@@ -30,8 +30,8 @@ class Account
   const std::string name_;
   // disable copy and assignment to make a copy of initial object
   Account(const Account &acc) = delete;
-  Account &operator=(const Account &) = delete;
-  friend std::ostream& operator<< (std::ostream &out, const Account &account);
+  Account& operator=(const Account &) = delete;
+  
 
  protected:
   int amount_;
@@ -39,12 +39,18 @@ class Account
   Account(int amount, std::string currency, std::string name)
       : amount_(amount), currency_(currency), name_(name){};
   virtual bool validate(int amount, std::string currency);
+  
 
  public:
   void print();
   std::shared_ptr<Money> take(int amount, std::string currency);
   bool put(std::shared_ptr<Money>);
+  bool put(Money& money);
+  Account& operator+=(Money& money);
+  Account& operator+=(std::shared_ptr<Money> money);
+  friend Account& operator+=(std::shared_ptr<Account> acc, std::shared_ptr<Money> money);
   const std::string &getName() const { return name_; };
+  friend std::ostream& operator<<(std::ostream &out, const Account &account);
 };
 
 class RUBAccount : public Account {
