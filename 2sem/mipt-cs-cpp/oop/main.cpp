@@ -20,7 +20,7 @@ int main()
   
   std::cout<<*acc1<<std::endl;
   
-  acc1 += m1;
+  acc1 += m2;
   
   std::cout<<*acc1<<std::endl;
   std::cout<<"put "<<acc1->put(m2)<<std::endl;
